@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             BackgroundColor="Black"
+             x:Class="Calculator.MainPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <Style x:Key="extraButtons" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#191919" />
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="12"/>
+            </Style>
+            <Style x:Key="numberButtons" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#262626"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+            <Style x:Key="modButtons" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#808080"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+            <Style x:Key="operatorButtons" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#fd9a24"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <StackLayout Padding="10,10,60,10">
+        <!-- Place new controls here -->
+        <Label x:Name="lab" Text="0" FontSize="40" HorizontalTextAlignment="End"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="EndAndExpand" />
+        <Grid Padding="30,10,40,40" HeightRequest="600" HorizontalOptions="CenterAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55" />
+                <RowDefinition Height="55" />
+                <RowDefinition Height="55" />
+                <RowDefinition Height="55" />
+                <RowDefinition Height="55" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="65" />
+                <ColumnDefinition Width="65" />
+                <ColumnDefinition Width="65" />
+                <ColumnDefinition Width="65" />
+                <ColumnDefinition Width="65" />
+                <ColumnDefinition Width="65" />
+                <ColumnDefinition Width="65" />
+                <ColumnDefinition Width="65" />
+                <ColumnDefinition Width="65" />
+                <ColumnDefinition Width="65" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name ="leftPar" Text="(" Style="{StaticResource extraButtons}" Grid.Row="0" Grid.Column="0" HeightRequest="20" WidthRequest="40" CornerRadius="25" />
+            <Button x:Name ="rightPar" Text=")" Style="{StaticResource extraButtons}" Grid.Row="0" Grid.Column="1" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="mc" Text="mc" Style="{StaticResource extraButtons}" Grid.Row="0" Grid.Column="2" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="mPlus" Style="{StaticResource extraButtons}" Text="m+" Grid.Row="0" Grid.Column="3" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="mMinus" Text="m-" Style="{StaticResource extraButtons}" Grid.Row="0" Grid.Column="4" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="mr" Text="mr" Style="{StaticResource extraButtons}" Grid.Row="0" Grid.Column="5" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="ac" Text="AC" Style="{StaticResource modButtons}" Grid.Row="0" Grid.Column="6" HeightRequest="20" WidthRequest="20" CornerRadius="25" Clicked="ac_Clicked"/>
+            <Button x:Name ="plusMinus" Text="+/-" Style="{StaticResource modButtons}" Grid.Row="0" Grid.Column="7" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="percent" Text="%" Style="{StaticResource modButtons}" Grid.Row="0" Grid.Column="8" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="divide" Text="/" Style="{StaticResource operatorButtons}" Grid.Row="0" Grid.Column="9" HeightRequest="20" WidthRequest="20" CornerRadius="25" Clicked="divide_Clicked"/>
+            <Button x:Name ="second" Text="2nd" Style="{StaticResource extraButtons}" Grid.Row="1" Grid.Column="0" HeightRequest="20" WidthRequest="40" CornerRadius="25" />
+            <Button x:Name ="xSquare" Text="x^2" Style="{StaticResource extraButtons}" Grid.Row="1" Grid.Column="1" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="xCube" Text="x^3" Style="{StaticResource extraButtons}" Grid.Row="1" Grid.Column="2" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="xToThe" Text="x^y" Style="{StaticResource extraButtons}" Grid.Row="1" Grid.Column="3" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="eToThe" Text="e^x" Style="{StaticResource extraButtons}" Grid.Row="1" Grid.Column="4" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="tenToThe" Text="10^x" Style="{StaticResource extraButtons}" Grid.Row="1" Grid.Column="5" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="seven" Text="7" Style="{StaticResource numberButtons}" Grid.Row="1" Grid.Column="6" HeightRequest="20" WidthRequest="20" CornerRadius="25" Clicked="seven_Clicked"/>
+            <Button x:Name ="eight" Text="8" Style="{StaticResource numberButtons}" Grid.Row="1" Grid.Column="7" HeightRequest="20" WidthRequest="20" CornerRadius="25" Clicked="eight_Clicked"/>
+            <Button x:Name ="nine" Text="9" Style="{StaticResource numberButtons}" Grid.Row="1" Grid.Column="8" HeightRequest="20" WidthRequest="20" CornerRadius="25" Clicked="nine_Clicked"/>
+            <Button x:Name ="multiply" Text="x" Style="{StaticResource operatorButtons}" Grid.Row="1" Grid.Column="9" HeightRequest="20" WidthRequest="20" CornerRadius="25" Clicked="multiply_Clicked"/>
+            <Button x:Name ="tenverX" Text="1/x" Style="{StaticResource extraButtons}" Grid.Row="2" Grid.Column="0" HeightRequest="20" WidthRequest="40" CornerRadius="25" />
+            <Button x:Name ="twoSquareX" Text="sqrt" Style="{StaticResource extraButtons}" Grid.Row="2" Grid.Column="1" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="threeSquareX" Text="x^1/3" Style="{StaticResource extraButtons}" Grid.Row="2" Grid.Column="2" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="ySquareX" Text="x^1/y" Style="{StaticResource extraButtons}" Grid.Row="2" Grid.Column="3" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="ln" Text="ln" Style="{StaticResource extraButtons}" Grid.Row="2" Grid.Column="4" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="logTen" Text="log10" Style="{StaticResource extraButtons}" Grid.Row="2" Grid.Column="5" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="four" Text="4" Style="{StaticResource numberButtons}" Grid.Row="2" Grid.Column="6" HeightRequest="20" WidthRequest="20" CornerRadius="25" Clicked="four_Clicked"/>
+            <Button x:Name ="five" Text="5" Style="{StaticResource numberButtons}" Grid.Row="2" Grid.Column="7" HeightRequest="20" WidthRequest="20" CornerRadius="25" Clicked="five_Clicked"/>
+            <Button x:Name ="six" Text="6" Style="{StaticResource numberButtons}" Grid.Row="2" Grid.Column="8" HeightRequest="20" WidthRequest="20" CornerRadius="25" Clicked="six_Clicked"/>
+            <Button x:Name ="minus" Text="-" Style="{StaticResource operatorButtons}" Grid.Row="2" Grid.Column="9" HeightRequest="20" WidthRequest="20" CornerRadius="25" Clicked="minus_Clicked"/>
+            <Button x:Name ="factorial" Text="x!" Style="{StaticResource extraButtons}" Grid.Row="3" Grid.Column="0" HeightRequest="20" WidthRequest="40" CornerRadius="25" />
+            <Button x:Name ="sin" Text="sin" Style="{StaticResource extraButtons}" Grid.Row="3" Grid.Column="1" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="cos" Text="cos" Style="{StaticResource extraButtons}" Grid.Row="3" Grid.Column="2" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="tan" Text="tan" Style="{StaticResource extraButtons}" Grid.Row="3" Grid.Column="3" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="e" Text="e" Style="{StaticResource extraButtons}" Grid.Row="3" Grid.Column="4" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="EE" Text="EE" Style="{StaticResource extraButtons}" Grid.Row="3" Grid.Column="5" HeightRequest="20" WidthRequest="20" CornerRadius="25" />
+            <Button x:Name ="one" Text="1" Style="{StaticResource numberButtons}" Grid.Row="3" Grid.Column="6" HeightRequest="20" WidthRequest="20" CornerRadius="25" Clicked="one_Clicked"/>
+            <Button x:Name ="two" Text="2" Style="{StaticResource numberButtons}" Grid.Row="3" Grid.Column="7" HeightRequest="20" WidthRequest="20" CornerRadius="25" Clicked="two_Clicked"/>
+            <Button x:Name ="three" Text="3" Style="{StaticResource numberButtons}" Grid.Row="3" Grid.Column="8" HeightRequest="20" WidthRequest="20" CornerRadius="25" Clicked="three_Clicked"/>
+            <Button x:Name ="plus" Text="+" Style="{StaticResource operatorButtons}" Grid.Row="3" Grid.Column="9" HeightRequest="20" WidthRequest="20" CornerRadius="25" Clicked="plus_Clicked"/>
+            <Button x:Name ="Deg" Text="Deg" Style="{StaticResource extraButtons}" Grid.Row="4" Grid.Column="0" HeightRequest="20" WidthRequest="20" CornerRadius="25"/>
+            <Button x:Name ="sinh" Text="sinh" Style="{StaticResource extraButtons}" Grid.Row="4" Grid.Column="1" HeightRequest="20" WidthRequest="20" CornerRadius="25"/>
+            <Button x:Name ="cosh" Text="cosh" Style="{StaticResource extraButtons}" Grid.Row="4" Grid.Column="2" HeightRequest="20" WidthRequest="20" CornerRadius="25"/>
+            <Button x:Name ="tanh" Text="tanh" Style="{StaticResource extraButtons}" Grid.Row="4" Grid.Column="3" HeightRequest="20" WidthRequest="20" CornerRadius="25"/>
+            <Button x:Name ="pi" Text="pi" Style="{StaticResource extraButtons}" Grid.Row="4" Grid.Column="4" HeightRequest="20" WidthRequest="20" CornerRadius="25"/>
+            <Button x:Name ="Rand" Text="Rand" Style="{StaticResource extraButtons}" Grid.Row="4" Grid.Column="5" HeightRequest="20" WidthRequest="20" CornerRadius="25"/>
+            <Button x:Name ="zero" Text="0" Style="{StaticResource numberButtons}" Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2" HeightRequest="20" WidthRequest="20" CornerRadius="25" Clicked="zero_Clicked"/>
+            <Button x:Name ="point" Text="." Style="{StaticResource numberButtons}" Grid.Row="4" Grid.Column="8" HeightRequest="20" WidthRequest="20" CornerRadius="25" Clicked="point_Clicked"/>
+            <Button x:Name ="equals" Text="=" Style="{StaticResource operatorButtons}" Grid.Row="4" Grid.Column="9" HeightRequest="20" WidthRequest="20" CornerRadius="25" Clicked="equals_Clicked"/>
+
+        </Grid>
+    </StackLayout>
+
+</ContentPage>
